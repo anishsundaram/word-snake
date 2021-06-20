@@ -20,7 +20,7 @@ void word_snake(vector<string> word_list, vector<vector<char> >& letter_matrix){
     for(uint i = 0; i < word_list.size(); ++i){
         if(i%2==0){
             if(counter==1 && (horiz_dist-int(word_list[i].size()))>0){
-                for(int start =int(word_list[i].size()-1); start >=0; --start){
+                for(int start = 0; start< word_list[i].size(); ++start){
                     letter_matrix[vert_dist][horiz_dist] = word_list[i][start];
                     --horiz_dist;
                  }
@@ -29,7 +29,7 @@ void word_snake(vector<string> word_list, vector<vector<char> >& letter_matrix){
                 ++horiz_dist;
             }
             else{
-                for(uint start = 0; start< word_list[i].size(); ++start){
+                for(int start = 0; start< word_list[i].size(); ++start){
                     letter_matrix[vert_dist][horiz_dist] = word_list[i][start];
                     horiz_dist++;
                 }
@@ -39,10 +39,11 @@ void word_snake(vector<string> word_list, vector<vector<char> >& letter_matrix){
             }
         }        
         else{
-           for(uint start = 1; start < word_list[i].size()-1; ++start){
+           for(uint start = 1; start < word_list[i].size(); ++start){
                     letter_matrix[vert_dist][horiz_dist] = word_list[i][start];
                     ++vert_dist;
            }
+            --vert_dist;
         }
     }
     print_matrix(letter_matrix);
@@ -61,8 +62,10 @@ uint parse_date(vector<string>& word_list){
 
 
 int main(int argc, char *argv[]){
-    freopen("input1.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
+    //Include for Xcode and replace * with (1-4) inclusive
+    //freopen("input2.txt", "r", stdin);
+    //freopen("output.txt", "w", stdout);
+    
     vector<string> word_list;
     uint size = parse_date(word_list);
     vector<vector<char> > letter_matrix(size, vector<char>(size,' '));
