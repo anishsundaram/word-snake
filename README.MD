@@ -1,6 +1,6 @@
 # Word Snake
 
-Simple Word Snake generator written in C/C++ for fun/practice 
+Simple Word Snake generator written in C++ for fun/practice 
 
 ## Constraints
 
